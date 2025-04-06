@@ -1,10 +1,10 @@
-import './FooterFilters.scss';
+import classes from './FooterFilters.module.scss';
 
 function FooterFilters() {
 
     return (
     <>
-        <div className="filters">
+        <div className={classes.filters}>
             Footer
         </div>
     </>
