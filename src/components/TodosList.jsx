@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Todo from './Todo.jsx';
 
 const initialTodos = [
@@ -8,21 +9,19 @@ const initialTodos = [
 
 function TodosList() {
 
+const [todos, setTodos] = useState(initialTodos);
+
   return (
     <>
         <div className="todos">
 
-            <Todo
-              title="Do Groceries"
-              description="Buy apples, rice, juice and toilet paper."
-              isDone={true}
-            />
+            {todos.map(todo => 
 
-            <Todo
-              title="Study React"
-              description="Understand context, reducers and state management with Redux."  
-              isDone={false}
-            />
+              <Todo
+              todo={todo}
+              key={todo.id}
+              />
+            )}
 
         </div>
     </>
