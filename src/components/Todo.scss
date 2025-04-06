@@ -12,11 +12,11 @@
     box-shadow: -2px 3px 29px -10px rgba(0,0,0,0.6);
     max-width: 650px;
     margin-bottom: 20px;
- 
+
     &.done :is(h3, p) {
         text-decoration: line-through;
     }
- 
+
     button.erase {
         background-color: transparent;
         position: absolute;
@@ -27,13 +27,13 @@
         cursor: pointer;
         display: none;
     }
- 
+
     &:hover {
         button.erase {
             display: block;
         }
     }
- 
+
     h3 {
         font-size: 20px;
         font-weight: 700;
@@ -41,7 +41,7 @@
         letter-spacing: 0em;
         text-align: left;
     }
- 
+
     p {
         margin-top: 18px;
         margin-bottom: 12px;
@@ -51,13 +51,13 @@
         letter-spacing: 0em;
         text-align: left;
     }
- 
+
     .task-check {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         margin-top: 18px;
- 
+
         label {
             font-size: 13px;
             font-weight: 400;
@@ -67,7 +67,7 @@
             margin-left: 5px;
             cursor: pointer;
         }
- 
+
         input {
             display: flex;
             justify-content: center;
@@ -78,11 +78,11 @@
             border: 0.77px solid #AEAEB2;
             appearance: none;
             cursor: pointer;
- 
+
             &:checked {
                 background-color: #0A7AFF;
                 border-color: #0A7AFF;
- 
+
                 &::before {
                     content: '';
                     display: block;

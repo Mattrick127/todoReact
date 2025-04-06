@@ -11,7 +11,6 @@ function Home() {
             <TodosList />
         </div>
 
-        <FooterFilters />
     </>
     )
   }

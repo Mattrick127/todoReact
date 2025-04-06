@@ -1,4 +1,5 @@
-import './Header.scss'
+import './Header.scss';
+
 function Header({ appName }) {
 
     return (
@@ -11,7 +12,7 @@ function Header({ appName }) {
                     </h1>
                 </div>
                 <div className="header-side">
-                    <button className="btn secondary">+ Add To-Do</button>
+                    <button className="btn secondary">+ Add Task</button>
                 </div>
             </div>
         </div>

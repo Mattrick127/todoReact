@@ -1,4 +1,5 @@
-import './Todo.scss'
+import './Todo.scss';
+
 function Todo({ title, description, isDone }) {
 
   return (

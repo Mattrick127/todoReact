@@ -3,7 +3,7 @@
     margin-inline: auto;
     padding-inline: 1rem;
 }
- 
+
 .btn {
     border-radius: 8px;
     height: 48px;
@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
- 
+
     &.primary {
         background-color: var(--primary-color);
         color: var(--white-color);
@@ -34,7 +34,7 @@
         color: var(--black-color);
     }
 }
- 
+
 .close-btn {
     width: 14px;
     height: 14px;
