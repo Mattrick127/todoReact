@@ -8,22 +8,20 @@ function TodosList() {
 
   const store  = useContext(TodosContext);
 
-  function deleteHandler(id) {
-    if(confirm('Are you sure you want to delete this to-do?')) {
-      store.setTodos(store.todos.filter(todo => todo.id !== id));
+      function deleteHandler(id) {
+          store.dispatch({
+            type: 'deleted',
+            id: id
+          });
     }
-  }
+      function toggleIsDoneHandler(id) {
+          store.dispatch({
+            type: 'toggledIsDone',
+            id: id
+          });
+    }
 
-  function toggleIsDoneHandler(id) {
-    store. setTodos(store.todos.map(todo => {
-      if (todo.id === id) {
-        todo.isDone = !todo.isDone;
-        return todo;
-      } else {
-        return todo;
-      }
-    }))
-  }
+  
   
 
   return (
