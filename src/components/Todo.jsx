@@ -22,7 +22,7 @@ function Todo({ todo, deleteTodo, toggleIsDone }) {
                         
                     onClick={()=> toggleIsDone(todo.id)}
                     type="checkbox"
-                    checked={todo.isDone}
+                    defaultChecked={todo.isDone}
                     />
                 <label>
                     {!todo.isDone ? 'To-Do' : 'Done'}
