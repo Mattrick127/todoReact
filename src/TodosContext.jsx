@@ -1,4 +1,4 @@
-import {createContext, useReducer} from 'react';
+import {createContext, useContext, useReducer} from 'react';
 
 export const TodosContext = createContext("");
 
@@ -22,6 +22,11 @@ export function TodosProvider({children}) {
       </main>
     </>
   )
+}
+
+export function useTodos() {
+    return useContext(TodosContext);
+
 }
 
 function todosReducer(todos,action){

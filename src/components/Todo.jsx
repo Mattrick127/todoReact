@@ -1,9 +1,8 @@
-import { TodosContext } from '../TodosContext.jsx';
-import { useContext } from 'react';
+import { useTodos } from '../TodosContext.jsx';
 import './Todo.scss';
 
 function Todo({ todo }) {
-    const store = useContext(TodosContext)
+    const store = useTodos();
     return (
         <>
             <div className={`todo ${todo.isDone ? 'done' : ''}`}>
