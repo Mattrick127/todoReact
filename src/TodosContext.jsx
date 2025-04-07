@@ -1,5 +1,4 @@
 import {createContext, useReducer} from 'react';
-import todosReducer from './TodosReducer.js'
 
 export const TodosContext = createContext("");
 
@@ -23,4 +22,26 @@ export function TodosProvider({children}) {
       </main>
     </>
   )
+}
+
+function todosReducer(todos,action){
+    switch (action.type) {
+        case 'deleted': {
+            if(confirm('Are you sure you want to delete this todo?')) {
+                return todos.filter(todo => todo.id !== action.id);
+            }
+
+        }
+            case 'toggledIsDone': {
+                return (todos.map(todo => {
+                if (todo.id === action.id) {
+                    todo.isDone = !todo.isDone;
+                    return todo;
+                } else {
+                    return todo;
+                }
+            }));
+        }
+    }
+
 }
