@@ -1,4 +1,20 @@
+import {useTodos} from '../../TodosContext.jsx';
+
+
 function AddTodoModal() {
+
+    const store = useTodos();
+
+    function addTaskHandler() {
+        let newTodo = {isDone: false};
+        newTodo.title = document.querySelector('input[name=title]').value;
+        newTodo.description = document.querySelector('textarea[name=description]').value
+        if (newTodo.title && newTodo.description) {
+            console.log('go ahead')
+        } else {
+            alert('Please enter the title and description for the todo.');
+        }
+    }
  
     return (
     <>
@@ -8,7 +24,7 @@ function AddTodoModal() {
             <input type="text" name="title" placeholder="Enter a title..." /><br />
             <label htmlFor="description">Description *</label>
             <textarea name="description" rows="4" placeholder="Enter a description..." /><br />
-            <button className="btn gray">Add Task</button>
+            <button onClick={addTaskHandler} className="btn gray">Add Task</button>
         </div>
     </>
     )
