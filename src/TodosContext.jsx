@@ -46,7 +46,9 @@ function todosReducer(todos,action){
 
         }
         case 'added': {
-            return [...todos, action.newTodo];
+            let newTodo = action.newTodo;
+            newTodo.id = todos.length ? Math.max(...todos.map(todo => todo.id)) +1:1;
+            return [...todos, newTodo];
             }
 
         
