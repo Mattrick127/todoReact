@@ -45,6 +45,11 @@ function todosReducer(todos,action){
             }
 
         }
+        case 'added': {
+            return [...todos, action.newTodo];
+            }
+
+        
             case 'toggledIsDone': {
                 return (todos.map(todo => {
                 if (todo.id === action.id) {

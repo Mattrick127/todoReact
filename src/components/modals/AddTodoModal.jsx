@@ -10,7 +10,8 @@ function AddTodoModal() {
         newTodo.title = document.querySelector('input[name=title]').value;
         newTodo.description = document.querySelector('textarea[name=description]').value
         if (newTodo.title && newTodo.description) {
-            console.log('go ahead')
+            store.dispatch({type: 'added', newTodo});
+            store.setModalIsActive(false);
         } else {
             alert('Please enter the title and description for the todo.');
         }
