@@ -11,7 +11,7 @@ function TodosList() {
     <>
         <div className="todos">
 
-            {store.todos.map(todo => 
+            {store.filteredTodos().map(todo => 
               <Todo
               todo={todo}
               key={todo.id}
