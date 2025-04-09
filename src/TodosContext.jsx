@@ -14,6 +14,8 @@ export function TodosProvider({children}) {
 
     const [modalIsActive, setModalIsActive] = useState(false);
 
+    const [filterBy, setFilterBy] = useState('');
+
   return (
     <>
       <main>
@@ -23,7 +25,9 @@ export function TodosProvider({children}) {
                         todos,
                         dispatch,
                         modalIsActive,
-                        setModalIsActive
+                        setModalIsActive,
+                        filterBy,
+                        setFilterBy
                     }
                 }>
                 {children}
