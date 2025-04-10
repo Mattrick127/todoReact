@@ -1,11 +1,7 @@
-import {createContext, useContext, useReducer, useState} from 'react';
+import {createContext, useContext, useReducer, useState, useEffect} from 'react';
 export const TodosContext = createContext("");
 
-const initialTodos = [
-    { id: 0, title: 'Do Groceries', description: 'Buy apples, rice, juice and toilet paper.', isDone: true },
-    { id: 1, title: 'Study React', description: 'Understand context & reducers.', isDone: false},
-    { id: 2, title: 'Learn Redux', description: 'Learn state management with Redux', isDone: false }
-];
+const initialTodos = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
 
 
 export function TodosProvider({children}) {
@@ -27,57 +23,61 @@ export function TodosProvider({children}) {
         }
     }
 
-  return (
-    <>
-      <main>
-            <TodosContext.Provider 
-                value={
-                    {
-                        todos,
-                        dispatch,
-                        modalIsActive,
-                        setModalIsActive,
-                        filterBy,
-                        setFilterBy,
-                        filteredTodos
-                    }
-                }>
-                {children}
-            </TodosContext.Provider>
-      </main>
-    </>
-  )
-}
+    useEffect (() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos]);
 
-export function useTodos() {
-    return useContext(TodosContext);
-}
-
-function todosReducer(todos,action){
-    switch (action.type) {
-        case 'deleted': {
-            if(confirm('Are you sure you want to delete this todo?')) {
-                return todos.filter(todo => todo.id !== action.id);
-            }
-
-        }
-        case 'added': {
-            let newTodo = action.newTodo;
-            newTodo.id = todos.length ? Math.max(...todos.map(todo => todo.id)) +1:1;
-            return [...todos, newTodo];
-            }
-
-        
-            case 'toggledIsDone': {
-                return (todos.map(todo => {
-                if (todo.id === action.id) {
-                    todo.isDone = !todo.isDone;
-                    return todo;
-                } else {
-                    return todo;
-                }
-            }));
-        }
+    return (
+        <>
+        <main>
+                <TodosContext.Provider 
+                    value={
+                        {
+                            todos,
+                            dispatch,
+                            modalIsActive,
+                            setModalIsActive,
+                            filterBy,
+                            setFilterBy,
+                            filteredTodos
+                        }
+                    }>
+                    {children}
+                </TodosContext.Provider>
+        </main>
+        </>
+    )
     }
+
+    export function useTodos() {
+        return useContext(TodosContext);
+    }
+
+    function todosReducer(todos,action){
+        switch (action.type) {
+            case 'deleted': {
+                if(confirm('Are you sure you want to delete this todo?')) {
+                    return todos.filter(todo => todo.id !== action.id);
+                }
+
+            }
+            case 'added': {
+                let newTodo = action.newTodo;
+                newTodo.id = todos.length ? Math.max(...todos.map(todo => todo.id)) +1:1;
+                return [...todos, newTodo];
+                }
+
+            
+                case 'toggledIsDone': {
+                    return (todos.map(todo => {
+                    if (todo.id === action.id) {
+                        todo.isDone = !todo.isDone;
+                        return todo;
+                    } else {
+                        return todo;
+                    }
+                }));
+            }
+        }
 
 }
