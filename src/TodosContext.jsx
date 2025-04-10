@@ -58,6 +58,8 @@ export function TodosProvider({children}) {
             case 'deleted': {
                 if(confirm('Are you sure you want to delete this todo?')) {
                     return todos.filter(todo => todo.id !== action.id);
+                } else {
+                    return todos;
                 }
 
             }
